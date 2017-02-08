@@ -12,9 +12,9 @@ public class SecondTest extends Driver {
 
     @Test
     public void webTesting(){
-        System.setProperty("webdriver.chrome.driver", "/driver/chromedriver.exe");
+        // System.setProperty("webdriver.chrome.driver", "/driver/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        driver.get("http://qa-helper.com/first_selenium_test/");
+        driver.get("http://google.com");
         Assert.assertEquals("qa-helper",driver.findElement(By.id("site-title")).getText());
         driver.close();
     }
