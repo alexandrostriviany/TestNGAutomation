@@ -11,6 +11,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 /**
  * Created by BDSM on 08.02.2017.
  */
@@ -27,6 +29,9 @@ public class YandexMusic {
     static By searchField = By.id("nb-2");
     static By searchPageTitle = By.className("srg");
     static By btnSearch = By.xpath("//button[@type =\"submit\"]");
+    By songsList = By.xpath("//*[@class = \"track track_type_full track_selectable\"]");
+    By sidebarPlay = By.xpath("//*[@id=\"nb-1\"]//*[@class=\"sidebar-track__controls\"]//*[@class=\"icon icon_pp icon_size_L\"]");
+    By trackHeader = By.xpath("//*[@class = \"link link_arrow\"]");
 
     public void openHomePage() {
         driver.get(homePage);
@@ -35,6 +40,14 @@ public class YandexMusic {
     public void searchWord(final String word) {
         driver.findElement(searchField).sendKeys(word);
         driver.findElement(btnSearch).click();
+    }
+
+    public void playSong(){
+        WebElement actual = new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(trackHeader));
+        List<WebElement> list =  driver.findElements(songsList);
+        list.get(0).click();
+        WebElement play = new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(sidebarPlay));
+        play.click();
     }
 
     public void close() {

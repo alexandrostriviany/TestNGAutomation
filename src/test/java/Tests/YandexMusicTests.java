@@ -28,6 +28,7 @@ public class YandexMusicTests {
     public void searchTest1() {
         yandexMusic.openHomePage();
         yandexMusic.searchWord("ass");
+        yandexMusic.playSong();
     }
 
     @AfterTest
