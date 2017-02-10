@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 /**
  * Created by BDSM on 08.02.2017.
  */
-public class PornHub {
+public class PornHub extends Helper{
 
     WebDriver driver;
 
