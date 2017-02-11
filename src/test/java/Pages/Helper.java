@@ -19,4 +19,8 @@ public class Helper {
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();"
                 ,element);
     }
+
+    public void close(WebDriver driver) {
+        driver.quit();
+    }
 }

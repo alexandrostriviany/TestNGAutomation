@@ -11,14 +11,14 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Oleksandr_Mosin on 2/9/2017.
  */
-public class YandexMusicTests {
+public class YandexMusicGenreTests {
 
-    WebDriver driver;
-    YandexMusic yandexMusic;
+    WebDriver driver = new ChromeDriver();
+    YandexMusicGenre yandexMusicGenre = new YandexMusicGenre(driver);
 
-    @DataProvider(name = "singers")
+    @DataProvider(name = "genre")
     public static Object[][] values() {
-        return new Object[][]{{"guano apes"},{"хлеб"}};
+        return new Object[][]{{"Рок"},{"R&B"}};
     }
 
 
@@ -26,22 +26,21 @@ public class YandexMusicTests {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "drivers/Chrome/chromedriver.exe");
         driver = new ChromeDriver();
-        yandexMusic = new YandexMusic(driver);
+        yandexMusicGenre = new YandexMusicGenre(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().timeouts().setScriptTimeout(10, TimeUnit.SECONDS);
     }
 
-    @Test (dataProvider = "singers")
-    public void searchTest1(String sSinger) {
-        yandexMusic.openHomePage();
-        yandexMusic.searchWord(sSinger);
-        yandexMusic.playSong();
-        yandexMusic.checkSingerOnPlayerControl(sSinger);
+    @Test(dataProvider = "genre")
+    public void searchTest1(String value) {
+        yandexMusicGenre.openGenrePage();
+        yandexMusicGenre.chooseGenre(value);
+        yandexMusicGenre.checkGenreTitle(value);
     }
 
     @AfterTest
     public void afterTest() {
-        yandexMusic.close(driver);
+        yandexMusicGenre.close(driver);
     }
 }
