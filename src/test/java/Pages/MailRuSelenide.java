@@ -18,11 +18,7 @@ import static com.codeborne.selenide.Selenide.page;
  */
 public class MailRuSelenide {
 
-    private MailRuSelenide(){
-        System.setProperty("webdriver.chrome.driver", "drivers/Chrome/chromedriver.exe");
-    }
-
-    @FindBy (className = "logo__link__img logo__link__img_medium")
+    @FindBy(className = "logo__link__img logo__link__img_medium")
     private SelenideElement header;
 
     @FindBy(how = How.ID, using = "mailbox__login")
@@ -37,25 +33,29 @@ public class MailRuSelenide {
     @FindBy(id = "mailbox__auth__remember__checkbox")
     private SelenideElement rememberMeCheckBox;
 
-    public MailRuSelenide openMailRuHomePage(){
+    private MailRuSelenide() {
+        System.setProperty("webdriver.chrome.driver", "drivers/Chrome/chromedriver.exe");
+    }
+
+    public MailRuSelenide openMailRuHomePage() {
         open("http://mail.ru/");
         return page(MailRuSelenide.class);
     }
 
-    public MailRuSelenide enterName(final String name){
+    public MailRuSelenide enterName(final String name) {
         loginField.setValue(name);
         return page(MailRuSelenide.class);
     }
 
-    public void enterPassword(final String pass){
+    public void enterPassword(final String pass) {
         passwordField.setValue(pass);
     }
 
-    public void setRememberMeCheckBox(final boolean condition){
+    public void setRememberMeCheckBox(final boolean condition) {
         rememberMeCheckBox.setSelected(condition);
     }
 
-    public void pressEnter(){
+    public void pressEnter() {
         passwordField.pressEnter();
     }
 
