@@ -33,9 +33,6 @@ public class MailRuSelenide {
     @FindBy(id = "mailbox__auth__remember__checkbox")
     private SelenideElement rememberMeCheckBox;
 
-    private MailRuSelenide() {
-        System.setProperty("webdriver.chrome.driver", "drivers/Chrome/chromedriver.exe");
-    }
 
     public MailRuSelenide openMailRuHomePage() {
         open("http://mail.ru/");

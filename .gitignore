@@ -1,1 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
+/.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+TestNGLessons.iml
+target/

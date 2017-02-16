@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.disappear;
@@ -19,14 +20,15 @@ import static com.codeborne.selenide.Selenide.page;
  * Created by Oleksandr_Mosin on 2/16/2017.
  */
 public class SelenideTest {
-// -ea   -Dselenide.browser=org.openqa.selenium.chrome.ChromeDriver
+    // -ea   -Dselenide.browser=org.openqa.selenium.chrome.ChromeDriver  -Dselenide.browser=org.openqa.selenium.firefox.FirefoxDriver
     MailRuSelenide mailRuSelenide = page(MailRuSelenide.class);
+
 
     @Test
     public void userCanLoginByUsername() {
         mailRuSelenide.openMailRuHomePage();
-        mailRuSelenide.enterName("Vangog-007");
-        mailRuSelenide.enterPassword("51508");
+        mailRuSelenide.enterName("name");
+        mailRuSelenide.enterPassword("password");
         mailRuSelenide.setRememberMeCheckBox(false);
         mailRuSelenide.pressEnter();
         Selenide.sleep(5000);
